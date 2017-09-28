@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trivia Game</title>
+  <h1 id ="startButton">Start Button</h1>
+  <h1 id ="wins">Wins: </h1>
+  <h1 id = "timer">Timer: </h1>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+  <script>
+
+    //Pseudocode -
+ 
+
+    var game = {
+      wins : 0,
+      losses : 0,
+      number : 3,
+      intervalId : null,
+      questions : ["q1" , "q2"],
+      answers : ["a1", "a2"],
+      correctQuestions : 0,
+      incorrectQuestions : 0,
+      unansweredQuestions : 0,
+    
+    gameStart : function(){
+
+      }
+    };  
+    
+    //game screen will be loaded with a start button
+    $("#startButton").on("click", run); 
+        //start a timer and count down from 30 seconds
+    function run(){
+      game.intervalId = setInterval(decrement, 1000);
+    }
+
+    //  decrement number variable from set value to 0
+    function decrement(){
+
+      game.number--;
+      game.wins++;
+
+     $("#timer").html("Timer: " + game.number + "");
+     $("#wins").html("Wins: " + game.wins + "");
+
+    //when timer reaches 0, run stop function
+
+    if (game.number === 0) {
+      // stop();
+      clearInterval(game.intervalId);
+      // alert("time is up!");
+      return;
+
+    }
+
+  }
+
+
+    // function stop(){
+ 
+    // }
+
+    //clicking the start button will do the following:
+      //start a timer, compile a list of questions with a list of possible answers that can be selected using your mouse to click the circle next to the desired guess - keep in mind that only one answer can be selected at a time
+    //loss stage - when the timer reaches zero before all of the potential answers are selected, the game is over and the values for questions correct, incorrect questions and the unanswered questions are shown on the status screen. 
+    //win stage - select answers to each question and press the done button before the timer runs out - the game is over and the values for questions correct, incorrect questions and the unanswered questions are shown on the status screen.
+
+    // var timer = 0;
+
+
+
+
+</script>
+</body>
+</html>
