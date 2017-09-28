@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Trivia Game</title>
-  <h1 id ="startButton">Start Button</h1>
-  <h1 id ="wins">Wins: </h1>
-  <h1 id = "timer">Timer: </h1>
+    <title>Trivia Game</title>
+    <h1 id ="startButton">Start Button</h1>
+    <h1 id = "timer">Timer: </h1>
+    <hr>
+    <h1 id = "q1">Question 1: </h1>
+    <h2 id = "answerArray1">Answers List 1: </h2>
+    <hr>
+    <h1 id = "q2">Question 2: </h1>
+    <h2 id = "answerArray2">Answers List 2: </h2>
+    <hr>   
+    <h2 id = "Correct">Correct Answers: </h2>
+    <h2 id = "Incorrect">Incorrect Answers: </h2>
+    <h2 id = "Unanswered">Unanswered Questions: </h2>
+
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </head>
 <body>
@@ -15,12 +26,13 @@
  
 
     var game = {
-      wins : 0,
-      losses : 0,
       number : 3,
       intervalId : null,
-      questions : ["q1" , "q2"],
-      answers : ["a1", "a2"],
+      question: "",
+      answer: "",
+      questionsArray : ["q1" , "q2"],
+      answerArray1 : ["a1", "a2"],
+      answerArray2 : ["a1", "a2"],
       correctQuestions : 0,
       incorrectQuestions : 0,
       unansweredQuestions : 0,
@@ -41,27 +53,39 @@
     function decrement(){
 
       game.number--;
-      game.wins++;
+      // game.wins++;
 
      $("#timer").html("Timer: " + game.number + "");
-     $("#wins").html("Wins: " + game.wins + "");
+     // $("#wins").html("Wins: " + game.wins + "");
 
     //when timer reaches 0, run stop function
 
     if (game.number === 0) {
-      // stop();
-      clearInterval(game.intervalId);
-      // alert("time is up!");
-      return;
+      stop();
+
 
     }
 
   }
 
-
-    // function stop(){
+      function stop(){
+        clearInterval(game.intervalId);
+      // alert("time is up!");
+      return;
  
-    // }
+    }
+      // push questions array into a for loop and 
+      function arrayList(arr){
+        for (var i = 0; i < arr.length; i++);
+
+
+      }
+    arrayList(game.questionsArray);
+
+    // questions are pulled from an array and shown on the page one after another. The answers will be displayed underneath each question and have a radio button to the left of each one. One answer should be identified as true(correct) and the others should be false(incorrect)
+
+    // set an answer true array and an answer false array - run a for loop to check if the radio button is attached to a true or false answer.
+
 
     //clicking the start button will do the following:
       //start a timer, compile a list of questions with a list of possible answers that can be selected using your mouse to click the circle next to the desired guess - keep in mind that only one answer can be selected at a time
