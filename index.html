@@ -2,31 +2,126 @@
 <html>
 <head>
     <title>Trivia Game</title>
-    <h1 id ="startButton">Start Button</h1>
+    <meta charset="UTF-8">
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" href="assets/css/style.css" media="screen">
+   
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+     <div class = "container">
+
+      <div class="row">
+        <div class = "col-md-12">
+          <div class = "title">
+            <h1> TRIVIA !!! </h1>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-md-4">
+        </div>
+        <div class = "col-md-4">
+          <div class  = "startButton">
+          <h1 id ="startButton">Press Start Button</h1>
+          </div>
+        </div>
+        <div class = "col-md-4">
+        </div>
+      </div>
     <h1 id = "timer">Timer: </h1>
     <hr>
     <h1 id = "q1">Question 1: </h1>
-    <h2 id = "answerArray1">Answers List 1: </h2>
+    <h2 id = "a1">Answers List 1: </h2>
     <hr>
     <h1 id = "q2">Question 2: </h1>
-    <h2 id = "answerArray2">Answers List 2: </h2>
+    <h2 id = "a2">Answers List 2: </h2>
     <hr>   
     <h2 id = "Correct">Correct Answers: </h2>
     <h2 id = "Incorrect">Incorrect Answers: </h2>
     <h2 id = "Unanswered">Unanswered Questions: </h2>
-
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+</div>
 
 </head>
 <body>
   <script>
 
-    //Pseudocode -
- 
+
+
+    var question1 = { question: "What is 1 + 1", 
+                      answers: [
+                        {value: '7', correct:false},
+                        {value: '2', correct: true},
+                        {value: '6', correct:false},
+                        {value: '1', correct: false}
+                        ] 
+                      }
+    var question2 = { question: "What is 2 + 3", 
+                      answers: [
+                        {value: '11', correct:false},
+                        {value: '5', correct: true},
+                        {value: '12', correct:false},
+                        {value: '8', correct: false}
+                        ] 
+                      }
+
+    // var answers
+    // var currentIndex = 0
+        var questions = [ question1, question2 ]
+
+    // var currentIndex = 0
+    var questionArray = []
+
+    for ( var i = 0; i < questions.length; i++ ) {
+      questionArray.push(questions[i].question)
+      $("#q1").html(question1.question)
+    }
+
+       for ( var i = 0; i < questions.length; i++ ) {
+      questionArray.push(questions[i].question)
+      $("#q2").html(question2.question)
+    }
+
+    console.log(questionArray)
+    var answerArray1 = []
+    var answerArray2 = []
+    
+     function answerCount1(arr){
+        for ( var i = 0; i < arr.length; i++ ) {
+      answerArray1.push(arr[i])
+      // console.log(answerArray1)
+    }
+    }
+    
+    answerCount1(question1.answers)
+    // console.log(question1.answers[0].correct)
+
+        function answerCount1(arr){
+        for ( var i = 0; i < arr.length; i++ ) {
+      answerArray1.push(arr[i].value)
+      console.log(answerArray1)
+      var answerList = answerArray1.toString()
+      $("#a1").html("<h1>" + answerList + "</h1>")
+    }
+    }
+
+    
+     function answerCount2(arr){
+        for ( var i = 0; i < arr.length; i++ ) {
+      answerArray2.push(arr[i].value)
+      console.log(answerArray2)
+      var answerList = answerArray2.toString()
+      $("#a2").html("<h1>" + answerList + "</h1>")
+    }
+    }
+    
+    answerCount2(question2.answers)
+    // console.log(question2.answers[0].correct)
+   
 
     var game = {
-      number : 3,
+      number : 30,
       intervalId : null,
       question: "",
       answer: "",
@@ -46,6 +141,7 @@
     $("#startButton").on("click", run); 
         //start a timer and count down from 30 seconds
     function run(){
+      $(this).hide(); 
       game.intervalId = setInterval(decrement, 1000);
     }
 

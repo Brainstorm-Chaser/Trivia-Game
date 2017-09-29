@@ -1,0 +1,22 @@
+body {
+  background-color: grey;
+  text-align: center;
+  color:white;
+}
+
+.startButton {
+  background-color:lightblue;
+  padding:5px;
+  border: 3px grey;
+  color:black;
+}
+.container {
+  background-color:black;
+}
+
+.title {
+  background-color:yellow;
+  color:red;
+  font-weight: bold;
+  font-family:arial;
+}
