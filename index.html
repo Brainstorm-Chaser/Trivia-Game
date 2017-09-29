@@ -49,7 +49,7 @@
 
 
 
-    var question1 = { question: "What is 1 + 1", 
+    var question1 = { question: "What is 1 + 1?", 
                       answers: [
                         {value: '7', correct:false},
                         {value: '2', correct: true},
@@ -57,7 +57,7 @@
                         {value: '1', correct: false}
                         ] 
                       }
-    var question2 = { question: "What is 2 + 3", 
+    var question2 = { question: "What is 2 + 3?", 
                       answers: [
                         {value: '11', correct:false},
                         {value: '5', correct: true},
@@ -121,7 +121,7 @@
    
 
     var game = {
-      number : 30,
+      number : 10,
       intervalId : null,
       question: "",
       answer: "",
@@ -130,7 +130,7 @@
       answerArray2 : ["a1", "a2"],
       correctQuestions : 0,
       incorrectQuestions : 0,
-      unansweredQuestions : 0,
+      unansweredQuestions : 2,
     
     gameStart : function(){
 
@@ -157,6 +157,13 @@
     //when timer reaches 0, run stop function
 
     if (game.number === 0) {
+      $("#q1").hide();
+      $("#q2").hide();
+      $("#a1").hide();
+      $("#a2").hide();
+      $("#Correct").html("Correct Answers: " + game.correctQuestions + "");
+      $("#Incorrect").html("Incorrect Answers: " + game.incorrectQuestions + "");
+      $("#Unanswered").html("Unanswered Answers: " + game.unansweredQuestions + "");
       stop();
 
 
@@ -166,7 +173,7 @@
 
       function stop(){
         clearInterval(game.intervalId);
-      // alert("time is up!");
+      $("#timer").html("Ha Ha, this game cannot be won :)")
       return;
  
     }
