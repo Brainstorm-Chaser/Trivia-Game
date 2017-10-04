@@ -33,7 +33,7 @@
     <h1 id = "timer">Timer: </h1>
     <hr>
     <h1 id = "q1">Question 1: </h1>
-    <h2 id = "a1">Answers List 1: </h2>
+    <h2 id = "a1"></h2>
     <hr>
     <h1 id = "q2">Question 2: </h1>
     <h2 id = "a2">Answers List 2: </h2>
@@ -46,9 +46,6 @@
 </head>
 <body>
   <script>
-
-
-
     var question1 = { question: "What is 1 + 1?", 
                       answers: [
                         {value: '7', correct:false},
@@ -65,25 +62,20 @@
                         {value: '8', correct: false}
                         ] 
                       }
-
     // var answers
     // var currentIndex = 0
         var questions = [ question1, question2 ]
-
     // var currentIndex = 0
     var questionArray = []
-
     for ( var i = 0; i < questions.length; i++ ) {
       questionArray.push(questions[i].question)
       $("#q1").html(question1.question)
     }
-
        for ( var i = 0; i < questions.length; i++ ) {
       questionArray.push(questions[i].question)
       $("#q2").html(question2.question)
     }
-
-    console.log(questionArray)
+    // console.log(questionArray)
     var answerArray1 = []
     var answerArray2 = []
     
@@ -96,30 +88,39 @@
     
     answerCount1(question1.answers)
     // console.log(question1.answers[0].correct)
-
         function answerCount1(arr){
         for ( var i = 0; i < arr.length; i++ ) {
-      answerArray1.push(arr[i].value)
-      console.log(answerArray1)
-      var answerList = answerArray1.toString()
-      $("#a1").html("<h1>" + answerList + "</h1>")
+          var a1Button = $("<button>")
+          a1Button.attr("value",i)
+          a1Button.text(arr[i].value)
+            // answerArray1.push(arr[i].value)
+      // console.log(answerArray1)
+      // var answerList = answerArray1.toString()
+      $("#a1").append(a1Button)
+      
     }
     }
-
     
      function answerCount2(arr){
         for ( var i = 0; i < arr.length; i++ ) {
-      answerArray2.push(arr[i].value)
-      console.log(answerArray2)
-      var answerList = answerArray2.toString()
-      $("#a2").html("<h1>" + answerList + "</h1>")
+
+          var a2Button = $("<button>")
+          a2Button.attr("value",i)
+          a2Button.text(arr[i].value)
+            // answerArray1.push(arr[i].value)
+      // console.log(answerArray1)
+      // var answerList = answerArray1.toString()
+      $("#a2").append(a2Button)
+      // answerArray2.push(arr[i].value)
+      // console.log(answerArray2)
+      // var answerList = answerArray2.toString()
+      // $("#a2").html("<h1>" + answerList + "</h1>")
     }
     }
     
     answerCount2(question2.answers)
     // console.log(question2.answers[0].correct)
    
-
     var game = {
       number : 10,
       intervalId : null,
@@ -133,7 +134,6 @@
       unansweredQuestions : 2,
     
     gameStart : function(){
-
       }
     };  
     
@@ -144,18 +144,13 @@
       $(this).hide(); 
       game.intervalId = setInterval(decrement, 1000);
     }
-
     //  decrement number variable from set value to 0
     function decrement(){
-
       game.number--;
       // game.wins++;
-
      $("#timer").html("Timer: " + game.number + "");
      // $("#wins").html("Wins: " + game.wins + "");
-
     //when timer reaches 0, run stop function
-
     if (game.number === 0) {
       $("#q1").hide();
       $("#q2").hide();
@@ -165,12 +160,9 @@
       $("#Incorrect").html("Incorrect Answers: " + game.incorrectQuestions + "");
       $("#Unanswered").html("Unanswered Questions: " + game.unansweredQuestions + "");
       stop();
-
-
     }
 
-  }
-
+    }
       function stop(){
         clearInterval(game.intervalId);
       $("#timer").html("Ha Ha, this game cannot be won :)")
@@ -180,26 +172,31 @@
       // push questions array into a for loop and 
       function arrayList(arr){
         for (var i = 0; i < arr.length; i++);
-
-
       }
     arrayList(game.questionsArray);
 
+
+      $("button").on("click", answerValue); 
+       function answerValue(){
+       //    var a1Value = $(a1.value)
+       //    console.log(a1Value) 
+      console.log(this.value);
+      }
+
+
+    // $("#a1").on("click", answerValue); 
+    //     //start a timer and count down from 30 seconds
+    // function answerValue(){
+    //   console.log($(this).value) 
+    //   }
+
     // questions are pulled from an array and shown on the page one after another. The answers will be displayed underneath each question and have a radio button to the left of each one. One answer should be identified as true(correct) and the others should be false(incorrect)
-
     // set an answer true array and an answer false array - run a for loop to check if the radio button is attached to a true or false answer.
-
-
     //clicking the start button will do the following:
       //start a timer, compile a list of questions with a list of possible answers that can be selected using your mouse to click the circle next to the desired guess - keep in mind that only one answer can be selected at a time
     //loss stage - when the timer reaches zero before all of the potential answers are selected, the game is over and the values for questions correct, incorrect questions and the unanswered questions are shown on the status screen. 
     //win stage - select answers to each question and press the done button before the timer runs out - the game is over and the values for questions correct, incorrect questions and the unanswered questions are shown on the status screen.
-
     // var timer = 0;
-
-
-
-
 </script>
 </body>
 </html>
